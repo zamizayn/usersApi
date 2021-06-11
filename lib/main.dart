@@ -67,110 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 users.length > 0
-                    ? ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: users.length,
-                        shrinkWrap: true,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            child: Card(
-                                elevation: 15,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Name : ' + users[index].name.toString(),
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 8.0),
-                                        child: Text(
-                                          'Username : ' +
-                                              users[index].username.toString(),
-                                          style: TextStyle(
-                                              fontSize: 12, color: Colors.grey),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 8.0),
-                                        child: Text(
-                                          'Email : ' +
-                                              users[index].email.toString(),
-                                          style: TextStyle(
-                                              fontSize: 12, color: Colors.grey),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 8.0),
-                                        child: Text(
-                                          'Address : ' +
-                                              users[index]
-                                                  .address
-                                                  .street
-                                                  .toString() +
-                                              users[index]
-                                                  .address
-                                                  .suite
-                                                  .toString() +
-                                              users[index]
-                                                  .address
-                                                  .city
-                                                  .toString() +
-                                              "\n" +
-                                              users[index]
-                                                  .address
-                                                  .zipcode
-                                                  .toString(),
-                                          style: TextStyle(
-                                              fontSize: 12, color: Colors.grey),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 8.0),
-                                        child: Row(
-                                          children: [
-                                            Icon(Icons.business),
-                                            SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text(users[index].company.name),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 8.0),
-                                        child: Row(
-                                          children: [
-                                            Icon(Icons.public),
-                                            SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text(users[index].website),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 8.0),
-                                        child: Row(
-                                          children: [
-                                            Icon(Icons.call),
-                                            SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text(users[index].phone),
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                )),
-                          );
-                        })
+                    ? listData()
                     : Center(child: CircularProgressIndicator())
               ],
             ),
@@ -178,5 +75,112 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  ListView listData() {
+    return ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: users.length,
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          child: Card(
+                              elevation: 15,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Name : ' + users[index].name.toString(),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Text(
+                                        'Username : ' +
+                                            users[index].username.toString(),
+                                        style: TextStyle(
+                                            fontSize: 12, color: Colors.grey),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Text(
+                                        'Email : ' +
+                                            users[index].email.toString(),
+                                        style: TextStyle(
+                                            fontSize: 12, color: Colors.grey),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Text(
+                                        'Address : ' +
+                                            users[index]
+                                                .address
+                                                .street
+                                                .toString() +
+                                            users[index]
+                                                .address
+                                                .suite
+                                                .toString() +
+                                            users[index]
+                                                .address
+                                                .city
+                                                .toString() +
+                                            "\n" +
+                                            users[index]
+                                                .address
+                                                .zipcode
+                                                .toString(),
+                                        style: TextStyle(
+                                            fontSize: 12, color: Colors.grey),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.business),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(users[index].company.name),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.public),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(users[index].website),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.call),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(users[index].phone),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )),
+                        );
+                      });
   }
 }
